@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpasticBoy</title>
     <style>
-        /* Estilos opcionales para centrar el contenido */
+        /* Estilos para el fondo amarillo */
         body {
+            background-color: #ffffcc; /* Amarillo claro */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -14,34 +15,33 @@
             height: 100vh;
             margin: 0;
         }
+
+        /* Estilos para los botones */
+        button {
+            margin: 10px; /* Espacio entre los botones */
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ffcc00; /* Amarillo más intenso */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <h1 style="text-align: center;">SpasticBoy</h1>
-    <!-- Espacio para la imagen (reemplaza la URL o el archivo) -->
-    <img src="TU_URL_O_ARCHIVO_DE_IMAGEN" alt="Imagen de SpasticBoy" width="300">
+    <img src="https://www.nuevarevista.net/fausto-goethe/" alt="Imagen de SpasticBoy" width="300">
     <div style="text-align: center;">
         <!-- Botones -->
-        <button onclick="mostrarInfo()">Info</button>
-        <button onclick="abrirKSP()">KSP</button>
-        <button onclick="otraCosa()">Y una cosa más</button>
+        <button onclick="abrirArchivo('info.html')">Info</button>
+        <button onclick="abrirArchivo('ksp.html')">KSP</button>
+        <button onclick="abrirArchivo('otra_cosa.html')">Y una cosa más</button>
     </div>
 
-    <!-- Scripts (puedes agregar funciones aquí) -->
     <script>
-        function mostrarInfo() {
-            // Lógica para el botón "Info"
-            alert("Información sobre SpasticBoy");
-        }
-
-        function abrirKSP() {
-            // Lógica para el botón "KSP"
-            window.location.href = "https://www.ksp.com"; // Cambia la URL adecuadamente
-        }
-
-        function otraCosa() {
-            // Lógica para el botón "Y una cosa más"
-            alert("¡Otra cosa interesante!");
+        function abrirArchivo(nombreArchivo) {
+            // Redirige al archivo correspondiente
+            window.location.href = nombreArchivo;
         }
     </script>
 </body>
