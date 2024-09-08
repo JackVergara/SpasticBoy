@@ -6,7 +6,9 @@
     <title>Contador Pomodoro</title>
     <style>
         /* Estilos CSS para el contador */
-        /* Puedes personalizar estos estilos según tus preferencias */
+        body {
+            background-color: #f6f5ff;
+        }
         .contador {
             font-size: 24px;
             text-align: center;
@@ -14,16 +16,17 @@
     </style>
 </head>
 <body>
-    {
-      background-color:  #f6f5ff ; 
-}    
-<div class="contador">
+    <div class="contador">
         <p id="contador">25:00</p>
         <button onclick="iniciarContador()">Iniciar</button>
     </div>
 
+    <!-- Agrega un elemento de audio oculto para el sonido -->
+    <audio id="sonido" src="ruta/al/alarm.mp3" preload="auto"></audio>
+
     <script>
         let tiempoRestante = 1500; // 25 minutos en segundos
+        let totalMinutos = 0;
 
         function iniciarContador() {
             const contadorElemento = document.getElementById("contador");
@@ -36,7 +39,19 @@
 
                 if (tiempoRestante === 0) {
                     clearInterval(intervalo);
-                    // Aquí puedes agregar lógica para manejar las pausas
+                    const audio = document.getElementById('sonido');
+                    audio.play();
+
+                    // Cambiar al descanso corto (5 minutos)
+                    if (totalMinutos < 120) {
+                        tiempoRestante = 300; // 5 minutos
+                    } else {
+                        // Cambiar al contador de 10 minutos
+                        tiempoRestante = 600; // 10 minutos
+                    }
+
+                    totalMinutos += tiempoRestante / 60;
+                    iniciarContador(); // Reiniciar el contador
                 } else {
                     tiempoRestante--;
                 }
