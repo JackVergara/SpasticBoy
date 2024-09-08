@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador Pomodoro</title>
+    <style>
+        /* Estilos CSS para el contador */
+        /* Puedes personalizar estos estilos según tus preferencias */
+        .contador {
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="contador">
+        <p id="contador">25:00</p>
+        <button onclick="iniciarContador()">Iniciar</button>
+    </div>
 
+    <script>
+        let tiempoRestante = 1500; // 25 minutos en segundos
+
+        function iniciarContador() {
+            const contadorElemento = document.getElementById("contador");
+
+            const intervalo = setInterval(() => {
+                const minutos = Math.floor(tiempoRestante / 60);
+                const segundos = tiempoRestante % 60;
+
+                contadorElemento.textContent = `${minutos}:${segundos < 10 ? '0' : ''}${segundos}`;
+
+                if (tiempoRestante === 0) {
+                    clearInterval(intervalo);
+                    // Aquí puedes agregar lógica para manejar las pausas
+                } else {
+                    tiempoRestante--;
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
